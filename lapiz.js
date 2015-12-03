@@ -1,5 +1,6 @@
 'use strict';
 
+
 var exec = require('child_process').exec,
     Canvas = require('canvas'),
     lapiz = {
@@ -67,7 +68,7 @@ var exec = require('child_process').exec,
 
             /**
              * Prepare our grid. Shame JS does not provide a shortcut to
-             * do this like, for instance, Matlab. zeros(grid.rows, grid.cols)
+             * do this like, for instance, Matlab: zeros(grid.rows, grid.cols)
              */
             for (let i = 0; i < grid.cols; i += 1) {
                 let current = [];
@@ -100,8 +101,7 @@ var exec = require('child_process').exec,
              */
             for (let y = 0; y < grid.rows; y += 1) {
                 for (let x = 0; x < grid.cols; x += 1) {
-                    let currentPixel = grid.cols * y + x;
-                    grid.data[x][y] = img.data[4 * currentPixel] < 170;
+                    grid.data[x][y] = img.data[4 * (grid.cols * y + x)] < 170;
                 }
             }
 
@@ -124,15 +124,15 @@ var exec = require('child_process').exec,
 
                     if (row) {
                         for (let colorLoop = 0; colorLoop < top.colorLoops; colorLoop += 1) {
+                            exec("echo " + loop + Math.random() + " > ./support.txt ", function (err) {});
                             //exec("echo " + loop + Math.random() + " > ./support.txt && git add support.txt && GIT_AUTHOR_DATE='" + top.startDate + "' GIT_COMMITTER_DATE='" + top.startDate + "' git commit -m 'Painting my history.'", function (err) {});
                         }
 
-                        top.sleep(100);
+                        top.sleep(50);
                     }
 
                     row = loop + (row ? 'C' + top.character + '\n' : 'C \n');
                     process.stdout.write('\u001b[' + row);
-                    //console.log(top.startDate);
                 });
 
                 //exec("git rm support.txt && git commit -m 'Delete my traces...';", function (err) {});
@@ -147,7 +147,7 @@ var exec = require('child_process').exec,
         push: function lapiz$push() {
             exec("git push origin master", function (err) {
                 if (err) {
-                    console.error(' Error while pushing to the repository.');
+                    console.error(' Error while pushing to the repository:', err, '\n');
                     return;
                 }
 
