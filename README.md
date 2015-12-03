@@ -1,7 +1,7 @@
 # lapiz
 Write something on your Github commit history.
 
-In order to be able to install the [canvas](https://github.com/Automattic/node-canvas) package you need to have Cairo installed.
+In order to be able to install the [canvas](https://github.com/Automattic/node-canvas) package you need to have Cairo installed. <br/>
 On OSX, it can be installed easlily: `brew install pkg-config cairo libpng jpeg giflib`
 
 Then:
