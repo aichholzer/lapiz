@@ -1,4 +1,6 @@
 # lapiz
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/aichholzer/lapiz.svg)](https://greenkeeper.io/)
 Write something on your Github commit history.
 
 In order to be able to install the [canvas](https://github.com/Automattic/node-canvas) package you need to have Cairo installed. <br/>
